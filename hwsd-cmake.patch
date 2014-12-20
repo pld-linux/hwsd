@@ -1,0 +1,14 @@
+--- hwsd-1.1.1/CMakeLists.txt.orig	2014-10-07 13:54:35.000000000 +0200
++++ hwsd-1.1.1/CMakeLists.txt	2014-12-20 18:55:43.575418516 +0100
+@@ -20,11 +20,6 @@
+ set(COMMON_PROJECT_DOMAIN ch.eyescale)
+ 
+ include(Common)
+-include(Buildyard)
+-
+-if(BUILDYARD_STOP)
+-  return()
+-endif()
+ 
+ if(APPLE)
+   # WAR otherwise MacPorts X11 (/opt/local) is preferred
