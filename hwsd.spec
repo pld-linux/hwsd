@@ -12,6 +12,8 @@ Group:		Libraries
 Source0:	https://github.com/Eyescale/hwsd/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	315a8543078db1be6c1600cf5d964e93
 Patch0:		%{name}-cmake.patch
+Patch1:		%{name}-lib.patch
+Patch2:		%{name}-avahi.patch
 URL:		https://github.com/Eyescale/hwsd/
 BuildRequires:	Eyescale-CMake
 BuildRequires:	Lunchbox-devel >= 1.10
@@ -66,6 +68,8 @@ Dokumentacja API biblioteki HW-SD.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 ln -s %{_datadir}/Eyescale-CMake CMake/common
 %{__rm} .gitexternals
@@ -102,14 +106,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libhwsd.so.2
 %attr(755,root,root) %{_libdir}/libhwsd_gpu_glx.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libhwsd_gpu_glx.so.1
+%attr(755,root,root) %{_libdir}/libhwsd_gpu_dns_sd.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libhwsd_gpu_dns_sd.so.1
 %attr(755,root,root) %{_libdir}/libhwsd_net_sys.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libhwsd_net_sys.so.1
+%attr(755,root,root) %{_libdir}/libhwsd_net_dns_sd.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libhwsd_net_dns_sd.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libhwsd.so
 %attr(755,root,root) %{_libdir}/libhwsd_gpu_glx.so
+%attr(755,root,root) %{_libdir}/libhwsd_gpu_dns_sd.so
 %attr(755,root,root) %{_libdir}/libhwsd_net_sys.so
+%attr(755,root,root) %{_libdir}/libhwsd_net_dns_sd.so
 %{_includedir}/hwsd
 %{_pkgconfigdir}/hwsd.pc
 %dir %{_datadir}/hwsd

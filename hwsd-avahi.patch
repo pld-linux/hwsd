@@ -1,0 +1,18 @@
+--- hwsd-1.1.1/hwsd/gpu/dns_sd/CMakeLists.txt.orig	2014-10-07 13:54:35.000000000 +0200
++++ hwsd-1.1.1/hwsd/gpu/dns_sd/CMakeLists.txt	2014-12-21 14:01:23.399969469 +0100
+@@ -1,5 +1,5 @@
+ 
+-if(NOT LUNCHBOX_USE_DNSSD)
++if(NOT LUNCHBOX_USE_DNSSD AND NOT LUNCHBOX_USE_AVAHI_CLIENT)
+   return()
+ endif()
+ 
+--- hwsd-1.1.1/hwsd/net/dns_sd/CMakeLists.txt.orig	2014-10-07 13:54:35.000000000 +0200
++++ hwsd-1.1.1/hwsd/net/dns_sd/CMakeLists.txt	2014-12-21 14:02:22.629695398 +0100
+@@ -1,5 +1,5 @@
+ 
+-if(NOT LUNCHBOX_USE_DNSSD)
++if(NOT LUNCHBOX_USE_DNSSD AND NOT LUNCHBOX_USE_AVAHI_CLIENT)
+   return()
+ endif()
+ 
