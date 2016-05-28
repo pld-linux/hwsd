@@ -1,0 +1,10 @@
+--- hwsd-1.3.0/hwsd/functions.h~	2015-11-02 15:14:17.000000000 +0000
++++ hwsd-1.3.0/hwsd/functions.h	2016-05-28 16:49:03.655901391 +0000
+@@ -21,6 +21,7 @@
+ #include <hwsd/api.h>
+ #include <hwsd/filter.h>
+ #include <hwsd/types.h>
++#include <servus/servus.h>
+ 
+ 
+ namespace hwsd
