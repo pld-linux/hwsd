@@ -1,12 +1,12 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
-#
+
 Summary:	Local and remote ZeroConf service discovery for hardware resources
 Summary(pl.UTF-8):	Lokalne i zdalne wykrywanie usług ZeroConf dla zasobów sprzętowych
 Name:		hwsd
 Version:	1.3.0
-Release:	2
+Release:	3
 License:	LGPL v2.1 (library), GPL v3+ (applications)
 Group:		Libraries
 Source0:	https://github.com/Eyescale/hwsd/archive/%{version}/%{name}-%{version}.tar.gz
@@ -58,6 +58,9 @@ Pliki nagłówkowe biblioteki HW-SD.
 Summary:	HW-SD API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki HW-SD
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for HW-SD library.
