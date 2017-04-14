@@ -5,12 +5,12 @@
 Summary:	Local and remote ZeroConf service discovery for hardware resources
 Summary(pl.UTF-8):	Lokalne i zdalne wykrywanie usług ZeroConf dla zasobów sprzętowych
 Name:		hwsd
-Version:	1.3.0
-Release:	3
+Version:	2.0.0
+Release:	1
 License:	LGPL v2.1 (library), GPL v3+ (applications)
 Group:		Libraries
 Source0:	https://github.com/Eyescale/hwsd/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	4c56f4dc80dfb0095c7ca8462a222e3a
+# Source0-md5:	85fbf643de9748f1cc8fcb3df813b625
 Patch0:		servus.patch
 URL:		https://github.com/Eyescale/hwsd/
 BuildRequires:	Eyescale-CMake
@@ -102,19 +102,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE.txt README.md doc/{AUTHORS,Changelog.md}
+%doc LICENSE.txt README.md doc/Changelog.md
 %attr(755,root,root) %{_bindir}/hw_sd
 %attr(755,root,root) %{_bindir}/hw_sd_list
 %attr(755,root,root) %{_libdir}/libhwsd.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libhwsd.so.3
+%attr(755,root,root) %ghost %{_libdir}/libhwsd.so.4
 %attr(755,root,root) %{_libdir}/libhwsd_gpu_glx.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libhwsd_gpu_glx.so.3
+%attr(755,root,root) %ghost %{_libdir}/libhwsd_gpu_glx.so.4
 %attr(755,root,root) %{_libdir}/libhwsd_gpu_dns_sd.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libhwsd_gpu_dns_sd.so.3
+%attr(755,root,root) %ghost %{_libdir}/libhwsd_gpu_dns_sd.so.4
 %attr(755,root,root) %{_libdir}/libhwsd_net_sys.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libhwsd_net_sys.so.3
+%attr(755,root,root) %ghost %{_libdir}/libhwsd_net_sys.so.4
 %attr(755,root,root) %{_libdir}/libhwsd_net_dns_sd.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libhwsd_net_dns_sd.so.3
+%attr(755,root,root) %ghost %{_libdir}/libhwsd_net_dns_sd.so.4
 
 %files devel
 %defattr(644,root,root,755)
