@@ -5,12 +5,13 @@
 Summary:	Local and remote ZeroConf service discovery for hardware resources
 Summary(pl.UTF-8):	Lokalne i zdalne wykrywanie usług ZeroConf dla zasobów sprzętowych
 Name:		hwsd
-Version:	2.0.0
-Release:	2
+Version:	2.0.1
+Release:	1
 License:	LGPL v2.1 (library), GPL v3+ (applications)
 Group:		Libraries
+#Source0Download: https://github.com/Eyescale/hwsd/releases
 Source0:	https://github.com/Eyescale/hwsd/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	85fbf643de9748f1cc8fcb3df813b625
+# Source0-md5:	d2285a1d878a12905fe9a062bc158aae
 Patch0:		servus.patch
 URL:		https://github.com/Eyescale/hwsd/
 BuildRequires:	Eyescale-CMake
@@ -19,8 +20,10 @@ BuildRequires:	OpenGL-GLX-devel
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Network-devel
 BuildRequires:	Servus-devel
+# just to satisfy cmake projects stupidity (FIXME)
+BuildRequires:	Servus-qt-devel
 BuildRequires:	boost-devel >= 1.41.0
-BuildRequires:	cmake >= 2.8
+BuildRequires:	cmake >= 3.1
 %{?with_apidocs:BuildRequires:	doxygen}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libstdc++-devel >= 6:4.2
@@ -46,6 +49,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki HW-SD
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	Lunchbox-devel >= 1.10
+Requires:	Servus-devel
 Requires:	libstdc++-devel
 
 %description devel
@@ -72,8 +76,8 @@ Dokumentacja API biblioteki HW-SD.
 %setup -q
 %patch0 -p1
 
+rmdir CMake/common
 ln -s %{_datadir}/Eyescale-CMake CMake/common
-%{__rm} .gitexternals
 
 %build
 install -d build
@@ -93,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/hwsd/doc
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/hwsd/examples $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -126,6 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/hwsd
 %dir %{_datadir}/hwsd
 %{_datadir}/hwsd/CMake
+%{_examplesdir}/%{name}-%{version}
 
 %if %{with apidocs}
 %files apidocs
