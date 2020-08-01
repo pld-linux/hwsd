@@ -1,0 +1,18 @@
+--- hwsd-2.0.1/hwsd/gpuInfo.cpp.orig	2020-08-01 07:38:16.290443380 +0200
++++ hwsd-2.0.1/hwsd/gpuInfo.cpp	2020-08-01 07:38:20.360657269 +0200
+@@ -37,7 +37,15 @@
+     , unused(0)
+ {
+     invalidatePVP();
++#if __GNUC__ >= 8
++    /* ignore "specified bound 4 equals destination size" */
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wstringop-truncation"
++#endif
+     strncpy(reinterpret_cast<char*>(&type), name.c_str(), 4);
++#if __GNUC__ >= 8
++#pragma GCC diagnostic push
++#endif
+ }
+ 
+ void GPUInfo::invalidatePVP()

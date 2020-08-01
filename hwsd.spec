@@ -6,13 +6,14 @@ Summary:	Local and remote ZeroConf service discovery for hardware resources
 Summary(pl.UTF-8):	Lokalne i zdalne wykrywanie usług ZeroConf dla zasobów sprzętowych
 Name:		hwsd
 Version:	2.0.1
-Release:	2
+Release:	3
 License:	LGPL v2.1 (library), GPL v3+ (applications)
 Group:		Libraries
 #Source0Download: https://github.com/Eyescale/hwsd/releases
 Source0:	https://github.com/Eyescale/hwsd/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	d2285a1d878a12905fe9a062bc158aae
 Patch0:		servus.patch
+Patch1:		%{name}-Werror.patch
 URL:		https://github.com/Eyescale/hwsd/
 BuildRequires:	Eyescale-CMake
 BuildRequires:	Lunchbox-devel >= 1.10
@@ -62,7 +63,7 @@ Pliki nagłówkowe biblioteki HW-SD.
 Summary:	HW-SD API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki HW-SD
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -75,6 +76,7 @@ Dokumentacja API biblioteki HW-SD.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 rmdir CMake/common
 ln -s %{_datadir}/Eyescale-CMake CMake/common
