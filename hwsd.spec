@@ -63,9 +63,7 @@ Pliki nagłówkowe biblioteki HW-SD.
 Summary:	HW-SD API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki HW-SD
 Group:		Documentation
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for HW-SD library.
