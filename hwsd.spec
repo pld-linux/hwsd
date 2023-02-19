@@ -6,7 +6,7 @@ Summary:	Local and remote ZeroConf service discovery for hardware resources
 Summary(pl.UTF-8):	Lokalne i zdalne wykrywanie usług ZeroConf dla zasobów sprzętowych
 Name:		hwsd
 Version:	2.0.1
-Release:	6
+Release:	7
 License:	LGPL v2.1 (library), GPL v3+ (applications)
 Group:		Libraries
 #Source0Download: https://github.com/Eyescale/hwsd/releases
